@@ -1,3 +1,10 @@
+from urllib.parse import quote
+from urllib.request import Request, urlopen
+import datetime
+import json
+import os
+import random
+
 GLOBAL_LANG = ["arabic", "german", "english", "spanish", "french", "hebrew", "italian", "japanese", "dutch", "polish", "portuguese", "romanian", "russian", "turkish"]
 GLOBAL_MAX_PHRASE_LENGTH = 96
 
@@ -8,17 +15,9 @@ def new_mimicry(current_dir):
 	mim_dict["User-Agent"] = random.choice(agents)[:-1]
 	exp_date = datetime.datetime.now() + datetime.timedelta(days=7)
 	mim_dict["Expire Date"] = exp_date.strftime("%Y-%m-%d")
-	print(mim_dict)
 	with open(current_dir + "/mimicry.json", 'wt') as mimfile: json.dump(mim_dict, mimfile)
 
 def reverso_get(source_language, target_language, phrase):
-	
-	from urllib.parse import quote
-	from urllib.request import Request, urlopen
-	import datetime
-	import json
-	import os
-	import random
 	
 	current_dir = os.path.abspath(os.path.dirname(__file__))
 	
