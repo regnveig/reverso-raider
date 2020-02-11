@@ -22,17 +22,15 @@ class ReversoParser(HTMLParser):
 		if (tag == 'div') and ('class', 'src ltr') in attrs: self.__current = "source"
 		if (tag == 'div') and ('class', 'trg ltr') in attrs: self.__current = "target"
 		if (tag == 'span') and (self.__current is not None) and ('class', 'text') in attrs: self.__started = True
-		if (tag == 'em') and (self.__current is not None): self.__row[self.__current] += "{"
+		if (tag == 'em') and (self.__current is not None): self.__row[self.__current] += "*"
 	
 	def handle_endtag(self, tag):
 		if (tag == 'span') and self.__started:
 			if self.__current == "target": self.__build = self.__build.append(self.__row, ignore_index=True)
 			self.__started = False
 			self.__current = None
-		if (tag == 'em') and (self.__current is not None): self.__row[self.__current] += "}"
-		if tag == 'html':
-			assert not self.__build.empty, "No results by this query!"
-			self.__build = self.__build.applymap(lambda x: re.sub(" +", " ", x).lstrip().rstrip())
+		if (tag == 'em') and (self.__current is not None): self.__row[self.__current] += "*"
+		if tag == 'html': self.__build = self.__build.applymap(lambda x: re.sub(" +", " ", x).lstrip().rstrip())
 	
 	def handle_data(self, data):
 		if self.__current is not None: self.__row[self.__current] += str(data)
