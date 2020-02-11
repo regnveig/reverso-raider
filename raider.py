@@ -12,9 +12,8 @@ import sys
 def highlighter(string): return ''.join([(colored(part[1], 'yellow') if (part[0] % 2) == 1 else part[1]) for part in enumerate(string.split('*'))])
 
 def cli_output(data):
-	if data.empty: print(f"\nNo results by this query!", end='\n')
+	if data.empty: print(f"No results by this query!", end='\n')
 	else:
-		print(str(), end='\n')
 		for row in data.iterrows(): print(f"{str(row[0] + 1)}:\t{highlighter(row[1]['source'])}\n\t{highlighter(row[1]['target'])}", end='\n', file=sys.stdout)
 
 def createParser():
@@ -30,8 +29,8 @@ if __name__ == '__main__':
 	namespace = parser.parse_args(sys.argv[1:])
 	if namespace.phrase is not None: cli_output(reverso_parse(reverso_get(namespace.source, namespace.target, str(namespace.phrase))))
 	else:
-		Tag = f"\nMode: {namespace.source.capitalize()} ==> {namespace.target.capitalize()} (enter phrase, or press Ctrl+D to exit)"
-		print(f"\n*** Reverso Raider ***", end='\n')
+		Tag = f"Mode: {namespace.source.capitalize()} ==> {namespace.target.capitalize()} (enter phrase, or press Ctrl+D to exit)"
+		print(f"*** Reverso Raider ***", end='\n')
 		print(Tag, end='\n')
 		for query in sys.stdin:
 			cli_output(reverso_parse(reverso_get(namespace.source, namespace.target, str(query))))
