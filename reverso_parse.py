@@ -9,7 +9,7 @@ class ReversoParser(HTMLParser):
 	__row = None
 	__current = None
 	__started = False
-
+	
 	def is_example(self, lst):
 		for element in lst:
 			if element[0] != 'class': continue
@@ -38,7 +38,9 @@ class ReversoParser(HTMLParser):
 	def examples(self): return self.__build
 
 def reverso_parse(content):
+	
 	content = content.replace('\n', ' ')
 	parser = ReversoParser()
 	parser.feed(content)
+	
 	return parser.examples()
