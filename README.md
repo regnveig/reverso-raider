@@ -4,6 +4,11 @@ Free tool to get Reverso Context examples uncensored.
 
 Author: regnveig
 
+## Dependencies
+
+* Python 3.x
+* Python packages: argparse, pandas, termcolor
+
 ## Syntax
 
 One query mode:
