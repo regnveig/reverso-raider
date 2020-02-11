@@ -30,7 +30,6 @@ if __name__ == '__main__':
 	if namespace.phrase is not None: cli_output(reverso_parse(reverso_get(namespace.source, namespace.target, str(namespace.phrase))))
 	else:
 		Tag = f"Mode: {namespace.source.capitalize()} ==> {namespace.target.capitalize()} (enter phrase, or press Ctrl+D to exit)"
-		print(f"*** Reverso Raider ***", end='\n')
 		print(Tag, end='\n')
 		for query in sys.stdin:
 			cli_output(reverso_parse(reverso_get(namespace.source, namespace.target, str(query))))
