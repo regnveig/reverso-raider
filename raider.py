@@ -50,10 +50,13 @@ if __name__ == '__main__':
 	else:
 		Tag = f"Mode: {namespace.source.capitalize()} --> {namespace.target.capitalize()} (enter phrase, or press Ctrl+D to exit)"
 		print(Tag, end='\n', file=sys.stdout)
+		
 		for query in sys.stdin:
+			# TODO Check query
 			try:
 				cli_output(reverso_parse(reverso_get(namespace.source, namespace.target, str(query))))
 			except Exception as e:
 				error_message(e)
 			print(Tag, end='\n', file=sys.stdout)
+		
 		print(f"Bye!", end='\n', file=sys.stdout)

@@ -2,6 +2,8 @@ from html.parser import HTMLParser
 import pandas
 import re
 
+# FIXME Arabic and hebrew cannot be parsed :(
+
 class ReversoParser(HTMLParser):
 	
 	__index = ["source", "target"]

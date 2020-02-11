@@ -6,7 +6,7 @@ import os
 import random
 
 GLOBAL_CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
-GLOBAL_LANG = ["arabic", "german", "english", "spanish", "french", "hebrew", "italian", "japanese", "dutch", "polish", "portuguese", "romanian", "russian", "turkish"] # arabic and hebrew not work :(
+GLOBAL_LANG = ["arabic", "german", "english", "spanish", "french", "hebrew", "italian", "japanese", "dutch", "polish", "portuguese", "romanian", "russian", "turkish"]
 GLOBAL_MAX_PHRASE_LENGTH = 96
 
 def new_mimicry():
